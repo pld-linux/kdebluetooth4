@@ -1,3 +1,7 @@
+
+%define		qtver	4.4.3
+%define		kde4ver	4.1.85
+
 Summary:	KDE Bluetooth framework
 Summary(pl.UTF-8):	Podstawowe środowisko KDE Bluetooth
 Name:		kdebluetooth4
@@ -9,12 +13,13 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kde-bluetooth/%{name}-%{version}.tar.bz2
 # Source0-md5:	66abefaf0d7e7f9980071c8519e52574
 URL:		http://bluetooth.kmobiletools.org/
-BuildRequires:	QtCore-devel
-BuildRequires:	QtDBus-devel
-BuildRequires:	QtGui-devel
+BuildRequires:	QtCore-devel >= %{qtver}
+BuildRequires:	QtDBus-devel >= %{qtver}
+BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	automoc4
 BuildRequires:	cmake
-BuildRequires:	kde4-kdelibs-devel
+BuildRequires:	kde4-kdelibs-devel >= %{kde4ver}
+BuildRequires:	kde4-kdebase-workspace-devel >= %{kde4ver}
 #BuildRequires:	hgw
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,20 +40,22 @@ jest możliwe.
 %setup -q
 
 %build
+install -d build
+cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
-	.
+	../
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
