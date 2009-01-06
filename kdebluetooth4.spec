@@ -9,6 +9,9 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kde-bluetooth/%{name}-%{version}.tar.bz2
 # Source0-md5:	7c6e5162d457fa594ecdd3f339ea8fc1
 URL:		http://bluetooth.kmobiletools.org/
+BuildRequires:	QtCore-devel
+BuildRequires:	QtDBus-devel
+BuildRequires:	QtGui-devel
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel
