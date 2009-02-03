@@ -1,19 +1,19 @@
 
 %define		qtver	4.4.3
-%define		kde4ver	4.1.85
+%define		kde4ver	4.2.0
 %define		snap	svn906753
 
 Summary:	KDE Bluetooth framework
 Summary(pl.UTF-8):	Podstawowe środowisko KDE Bluetooth
 Name:		kdebluetooth4
 Version:	0.3
-Release:	0.%{snap}.1
+Release:	0.1
 Epoch:		1
 License:	GPL
 Group:		X11/Applications
-#Source0:	http://dl.sourceforge.net/kde-bluetooth/%{name}-%{version}.tar.bz2
-Source0:	%{name}-%{version}-%{snap}.tar.bz2
-# Source0-md5:	3b4ae772fe118b02edcc03fb69d536a5
+Source0:	http://dl.sourceforge.net/kde-bluetooth/%{name}-%{version}.tar.bz2
+# Source0-md5:	e37438e8e597abe9c684acaf3aa1bb39
+#Source0:	%{name}-%{version}-%{snap}.tar.bz2
 URL:		http://bluetooth.kmobiletools.org/
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtDBus-devel >= %{qtver}
